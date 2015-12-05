@@ -6,9 +6,14 @@ RSpec.describe SecretSantaMaker, type: :model do
   let(:secret_santa_maker) { SecretSantaMaker.new(list) }
 
   describe '#generate' do
-    it 'generates an array with list-size +1 elements' do
+    it 'generates an array with the same size as the passed list' do
       generated_list = secret_santa_maker.generate
-      expect(generated_list.size).to eql list.size + 1
+      expect(generated_list.size).to eql list.size
+    end
+
+    it 'generates an array of 2-elements-array' do
+      generated_list = secret_santa_maker.generate
+      expect(generated_list.first.size).to eql 2
     end
 
     it 'first element never repeats' do

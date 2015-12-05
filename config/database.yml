@@ -12,7 +12,7 @@ test:
   encoding: utf8
   database: hehastwoeyes_test
   pool: 5
-  username: postgres
+  username: renoliver
   min_messages: WARNING
   host: localhost
 #  template: template0

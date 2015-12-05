@@ -3,14 +3,22 @@
 class SecretSantaMaker
 
   def initialize(participants)
-    @participants = participants
+    @participants = participants.shuffle
   end
 
   def generate
-    @participants
+    participants.map.with_index do |participant, index|
+      if participant == participants.last
+        [participant, participants[0]]
+      else
+        [participant, participants[index + 1]]
+      end
+    end
   end
 
   private
+
+  attr_accessor :participants
 
 
 end
