@@ -1,7 +1,7 @@
-@import 'normalize-rails';
-@import 'bourbon';
-@import 'base/base';
-@import 'neat';
+//@import 'normalize-rails';
+//@import 'bourbon';
+//@import 'base/base';
+//@import 'neat';
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -16,4 +16,7 @@
  *
  *
  *= require_self
+ *= require bootstrap.min
+ *= require stylish_portfolio
+ *= require snow
  */
