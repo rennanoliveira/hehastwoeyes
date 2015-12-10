@@ -1,10 +1,9 @@
 class Group < ActiveRecord::Base
 
   has_many :participants
-  belongs_to :manager, class_name: 'User'
+  belongs_to :manager, required: true, class_name: 'User'
 
   validates :name, presence: true
-  validates :manager_id, presence: true
   validates :code, presence: true, uniqueness: true
 
   before_validation :set_code, on: :create

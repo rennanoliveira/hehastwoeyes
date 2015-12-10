@@ -1,15 +1,15 @@
 class GroupMaker
 
-  attr_reader :group
+  attr_reader :user, :group
 
-  def initialize(user)
+  def initialize(user, group)
     @user = user
-    @group = build_group
+    @group = group
   end
 
-  def create
+  def save
     group.manager = user
-    group.participants.build(user: user)
+    group.participants.build(user_id: user.id)
     group.save
   end
 
@@ -18,11 +18,5 @@ class GroupMaker
   end
 
   private
-
-  attr_reader :user
-
-  def build_group
-    Group.new
-  end
 
 end

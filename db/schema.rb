@@ -31,8 +31,9 @@ ActiveRecord::Schema.define(version: 20151209211248) do
     t.integer "group_id"
   end
 
-  add_index "participants", ["group_id"], name: "index_participants_on_group_id", unique: true, using: :btree
-  add_index "participants", ["user_id"], name: "index_participants_on_user_id", unique: true, using: :btree
+  add_index "participants", ["group_id"], name: "index_participants_on_group_id", using: :btree
+  add_index "participants", ["user_id", "group_id"], name: "index_participants_on_user_id_and_group_id", unique: true, using: :btree
+  add_index "participants", ["user_id"], name: "index_participants_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

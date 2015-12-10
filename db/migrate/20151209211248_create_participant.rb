@@ -6,7 +6,8 @@ class CreateParticipant < ActiveRecord::Migration
       t.integer :group_id
     end
 
-    add_index :participants, :user_id, unique: true
-    add_index :participants, :group_id, unique: true
+    add_index :participants, :user_id
+    add_index :participants, :group_id
+    add_index :participants, [:user_id, :group_id], unique: true
   end
 end

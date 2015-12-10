@@ -6,7 +6,7 @@ RSpec.describe Group, type: :model do
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_presence_of(:manager_id) }
+    it { is_expected.to validate_presence_of(:manager) }
     it 'validates presence of code' do
       group.valid?
       expect(group.errors[:code]).to_not be_nil
