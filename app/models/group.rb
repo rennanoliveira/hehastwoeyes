@@ -1,15 +1,23 @@
 class Group < ActiveRecord::Base
 
-  validates :name, presence: true
-  validates :manager, presence: true
-  validates :code, presence: true
+  has_many :participants
+  belongs_to :manager, class_name: 'User'
 
-  before_validation :generate_code, on: :create
+  validates :name, presence: true
+  validates :manager_id, presence: true
+  validates :code, presence: true, uniqueness: true
+
+  before_validation :set_code, on: :create
+  accepts_nested_attributes_for :participants, reject_if: :all_blank
 
   private
 
+  def set_code
+    self.code = generate_code
+  end
+
   def generate_code
-    self.code = '1234'
+    [*('A'..'Z'),*('0'..'9')].shuffle[0,8].join
   end
 
 end

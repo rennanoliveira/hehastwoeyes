@@ -1,7 +1,7 @@
 <!-- Main -->
 <header id="top" class="landing-header">
   <div class="snow"></div>
-  <div class="text-vertical-center">
+  <div class="text-vertical-center landing-msg">
     <!-- error messages -->
     <% flash.each do |key, value| %>
         <div class="alert-fix alert alert-<%= alert_type(key) %> fade in" role="alert">
@@ -42,4 +42,4 @@
 </footer>
 
 <!-- Modal -->
-<%#= render :partial => 'modal' %>
+<%= render partial: 'modal' %>
