@@ -48,6 +48,11 @@ RSpec.describe GroupMaker, type: :model do
       expect(group_maker.errors).to_not be_empty
     end
 
+    it 'is empty when no errors occur' do
+      group_maker.save
+      expect(group_maker.errors).to be_empty
+    end
+
   end
 
 end

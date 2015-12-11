@@ -9,4 +9,9 @@ class User < ActiveRecord::Base
   # validates :email, presence: true
   # validates :password, presence: true
   validates :username, presence: true
+
+  has_many :participants
+  has_many :managed_groups, foreign_key: :manager_id, class_name: 'Group'
+  has_many :groups, through: :participants
+
 end

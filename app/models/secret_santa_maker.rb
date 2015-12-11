@@ -20,5 +20,4 @@ class SecretSantaMaker
 
   attr_accessor :participants
 
-
 end

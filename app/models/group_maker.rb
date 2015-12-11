@@ -9,7 +9,7 @@ class GroupMaker
 
   def save
     group.manager = user
-    group.participants.build(user_id: user.id)
+    group.participants.build(user: user)
     group.save
   end
 
