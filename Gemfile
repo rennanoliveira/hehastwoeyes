@@ -22,6 +22,7 @@ gem 'normalize-rails',        '3.0.3'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'font-awesome-rails'
 
 group :production, :staging do
   gem 'rails_12factor',       '0.0.3'

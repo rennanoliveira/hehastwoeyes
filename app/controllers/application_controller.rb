@@ -4,4 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   ensure_security_headers # See more: https://github.com/twitter/secureheaders
 
+  private
+
+  def after_sign_in_path_for(_resource)
+    home_path
+  end
+
 end
