@@ -27,11 +27,13 @@
       </ol>
       <hr/>
     </div>
-    <% if @group.manager == current_user %>
+    <% if (@group.manager == current_user) && !@group.drawn? %>
         <div class="text-muted text-center">
           <h4>Generate Secret Santa!</h4>
           <% if @group.users.size >= 3 %>
-              <%= link_to 'Start the game!', root_path, class: 'btn btn-primary' %>
+              <%= button_to 'Start the game!',
+                            group_group_draws_path(group_code: @group.code),
+                            class: 'btn btn-primary' %>
           <% else %>
               <p><b>Woops, it seems not enough people have joined yet.</b></p>
 

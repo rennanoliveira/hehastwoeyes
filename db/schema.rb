@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212130432) do
+ActiveRecord::Schema.define(version: 20151213181448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20151212130432) do
     t.integer  "manager_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "drawn"
   end
 
   create_table "participants", force: :cascade do |t|
@@ -34,6 +35,12 @@ ActiveRecord::Schema.define(version: 20151212130432) do
   add_index "participants", ["group_id"], name: "index_participants_on_group_id", using: :btree
   add_index "participants", ["user_id", "group_id"], name: "index_participants_on_user_id_and_group_id", unique: true, using: :btree
   add_index "participants", ["user_id"], name: "index_participants_on_user_id", using: :btree
+
+  create_table "secret_santa", force: :cascade do |t|
+    t.integer "participant_id"
+    t.integer "friend_id"
+    t.integer "group_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

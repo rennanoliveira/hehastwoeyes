@@ -2,6 +2,7 @@ class Group < ActiveRecord::Base
 
   has_many :participants, inverse_of: :group
   has_many :users, through: :participants
+  has_many :secret_santas, inverse_of: :group
   belongs_to :manager, required: true, class_name: 'User'
 
   validates :name, presence: true
@@ -9,6 +10,7 @@ class Group < ActiveRecord::Base
 
   before_validation :set_code, on: :create
   accepts_nested_attributes_for :participants, reject_if: :all_blank
+  accepts_nested_attributes_for :secret_santas, reject_if: :all_blank
 
   private
 
