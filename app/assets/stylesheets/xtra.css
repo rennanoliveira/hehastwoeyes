@@ -17,14 +17,13 @@
     min-height: 80px;
     /*padding: 5px;*/
     background: none repeat scroll 0 0 #fff;
-    border: 1px solid #e1e8ed;
-    border-radius: 6px;
+    border: 1px solid #292f33;
     margin-bottom: 20px;
 }
 
 .content-card-header {
     padding: 5px;
-    background-color: #add8e6;
+    background-color: indianred;
     text-align: center;
     margin-bottom: 10px;
 }

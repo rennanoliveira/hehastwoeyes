@@ -1,17 +1,30 @@
-<div class="container" style="margin-top:50px !important">
-  <div class="alert-fix alert alert-success fade in" role="alert">
-    Welcome to the Secret Santa Project! We see you still don't have a group going.
-    Would you like to Create a new group or find an existing group?
+<div class="container">
+
+  <!-- left side -->
+  <div class="col-md-4">
+    <%= render 'groups/discover_group' %>
   </div>
-  <div class="row">
-    <div class="col-md-6 well">
-      <% link_to new_group_path do %>
-          <h1>Create a new group</h1>
-      <% end %>
-      <p></p>
-    </div>
-    <div class="col-md-6 well">
-      <h1>Join existing group</h1>
+
+  <!-- main content -->
+  <div class="col-md-8">
+    <div class="content-card">
+      <div class="content-card-header">
+        <h3>Latest news</h3>
+      </div>
+      <div class="content-card-content">
+        <div class="bg-warning info-box">
+          <p class="text-muted"><b> Welcome to the Secret Santa Project!</b>
+
+          <p>We see you still don't have a group going.</p>
+
+          <p>To start playing, you can create a secret santa group, and then invite your friends to join it.
+            When all friends have joined, you can click a button and we will take care of randomizing it all for you
+            :)</p>
+
+          <p>If a friend has already created one, use the group code on the form to join it.</p>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>

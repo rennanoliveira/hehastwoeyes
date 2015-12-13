@@ -1,0 +1,18 @@
+<div class="content-card">
+
+  <div class="content-card-header">
+    <h3>@<%= current_user.username %></h3>
+  </div>
+  <div class="content-card-content">
+    <p>Use the group code bellow to find and join a group.</p>
+
+    <%= form_tag search_groups_path, {class: 'form-inline', method: :get} do %>
+        <%= text_field_tag :code, nil, class: 'form-control', placeholder: '#GROUPCODE' %>
+        <%= submit_tag 'Find group', class: 'btn btn-primary' %>
+    <% end %>
+    <br/>
+
+    <p class="info-box bg-warning">Alternatively, you can also <%= link_to 'create a group', new_group_path %>.</p>
+  </div>
+
+</div>
