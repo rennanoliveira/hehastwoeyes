@@ -23,4 +23,12 @@ module ApplicationHelper
     key == 'notice' ? 'success' : 'warning'
   end
 
+  def your_managed_groups
+    current_user.managed_groups
+  end
+
+  def your_groups
+    current_user.groups
+  end
+
 end

@@ -12,6 +12,25 @@
     <% end %>
     <br/>
 
+    <% if your_managed_groups.any? %>
+        <h4>Managed Groups:</h4>
+        <ul>
+          <% your_managed_groups.each do |group| %>
+            <li><%= link_to group.name, group_path(code: group.code)%></li>
+          <% end %>
+        </ul>
+    <% end %>
+
+    <% if your_groups.any? %>
+        <h4>Participating Groups:</h4>
+        <ul>
+          <% your_groups.each do |group| %>
+              <li><%= link_to group.name, group_path(code: group.code)%></li>
+          <% end %>
+        </ul>
+    <% end %>
+
+
     <p class="info-box bg-warning">Alternatively, you can also <%= link_to 'create a group', new_group_path %>.</p>
   </div>
 

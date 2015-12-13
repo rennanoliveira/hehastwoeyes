@@ -21,8 +21,8 @@
 
       <h4>Participants</h4>
       <ol>
-        <% @group.participants.each do |participant| %>
-            <li>@<%= participant.username %></li>
+        <% @group.users.each do |user| %>
+            <li>@<%= user.username %></li>
         <% end %>
       </ol>
       <hr/>
@@ -30,7 +30,7 @@
     <% if @group.manager == current_user %>
         <div class="text-muted text-center">
           <h4>Generate Secret Santa!</h4>
-          <% if @group.participants.size >= 3 %>
+          <% if @group.users.size >= 3 %>
               <%= link_to 'Start the game!', root_path, class: 'btn btn-primary' %>
           <% else %>
               <p><b>Woops, it seems not enough people have joined yet.</b></p>

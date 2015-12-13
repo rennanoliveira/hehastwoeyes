@@ -15,11 +15,11 @@ class GroupsController < ApplicationController
   end
 
   def show
-    search_group
+    @group = Group.includes(:users).where(code: params[:code]).first
   end
 
   def search
-    search_group
+    @group = Group.where(code: params[:code]).first
     if @group
       redirect_to group_path(code: @group.code), notice: 'Group found!'
     else
@@ -29,11 +29,6 @@ class GroupsController < ApplicationController
   end
 
   private
-
-  def search_group
-    @group = Group.where(code: params[:code]).first
-
-  end
 
   def group_params
     params.require(:group).permit(:name, :description)
