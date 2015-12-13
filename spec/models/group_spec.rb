@@ -7,6 +7,11 @@ RSpec.describe Group, type: :model do
   describe 'relations' do
     it { is_expected.to belong_to(:manager).class_name('User') }
     it { is_expected.to have_many(:participants).inverse_of(:group) }
+    it { is_expected.to have_many(:users).through(:participants) }
+    it { is_expected.to have_many(:secret_santas).inverse_of(:group) }
+
+    it { is_expected.to accept_nested_attributes_for(:participants) }
+    it { is_expected.to accept_nested_attributes_for(:secret_santas) }
   end
 
   describe 'validations' do
