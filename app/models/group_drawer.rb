@@ -16,10 +16,6 @@ class GroupDrawer
     end
   end
 
-  def errors
-    @group.errors
-  end
-
   private
 
   def generate_pairs
