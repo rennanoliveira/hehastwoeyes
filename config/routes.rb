@@ -10,10 +10,11 @@ Rails.application.routes.draw do
 
   get 'home' => 'home#index'
 
-  resources :groups do
+  resources :groups, param: :code do
     collection do
       get :search
     end
+    resources :participants
   end
 
 end

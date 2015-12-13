@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
 
   has_many :participants, inverse_of: :group
+  has_many :users, through: :participants
   belongs_to :manager, required: true, class_name: 'User'
 
   validates :name, presence: true

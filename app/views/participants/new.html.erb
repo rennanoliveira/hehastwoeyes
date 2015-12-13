@@ -1,0 +1,16 @@
+<div class="content-card-header">
+  <h3>Participate in <%= @group.name %></h3>
+</div>
+<div class="content-card-content">
+  <div class="info-box">
+    <p><b>Group Description:</b> <%= @group.description %> </p>
+    <%= form_for [@group, @participant] do |f| %>
+        <div class="form-group">
+          <%= f.label :comment %>*
+          <%= f.text_area :comment, class: 'form-control', placeholder: 'Is it a chocolate santa? Tell them your favorite chocolates! Or maybe your clothe size?' %>
+        </div>
+        <%= f.hidden_field :person_id, value: current_user.id %>
+        <button class="btn btn-primary" type="submit">Join in on the fun!</button>
+    <% end %>
+  </div>
+</div>

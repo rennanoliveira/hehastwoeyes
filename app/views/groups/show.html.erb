@@ -1,0 +1,52 @@
+<div class="content-card-header">
+  <h3><%= @group.name %></h3>
+</div>
+<div class="content-card-content">
+  <div class="info-box">
+    <div class="text-muted text-center">
+      <% unless @group.users.include? current_user %>
+          <%= link_to 'Join Group!', new_group_participant_path(group_code: @group.code), class: 'btn btn-primary' %>
+      <% end %>
+
+      <p><b>To invite friends, please send them the code bellow!</b>
+
+      <h3><%= @group.code %></h3>
+
+      <p>Alternatively, you can send them this link:</p>
+
+      <p><%= link_to group_url(@group.code) %></p>
+      <hr/>
+    </div>
+    <div class="text-muted">
+
+      <h4>Participants</h4>
+      <ol>
+        <% @group.participants.each do |participant| %>
+            <li>@<%= participant.username %></li>
+        <% end %>
+      </ol>
+      <hr/>
+    </div>
+    <% if @group.manager == current_user %>
+        <div class="text-muted text-center">
+          <h4>Generate Secret Santa!</h4>
+          <% if @group.participants.size >= 3 %>
+              <%= link_to 'Start the game!', root_path, class: 'btn btn-primary' %>
+          <% else %>
+              <p><b>Woops, it seems not enough people have joined yet.</b></p>
+
+              <p>(minimum: 3)</p>
+
+              <p><b>Invite your friends!</b></p>
+          <% end %>
+
+          <hr/>
+        </div>
+    <% end %>
+
+    <h4>Group Description:</h4>
+
+    <p><%= @group.description %></p>
+  </div>
+</div>
+</div>
