@@ -18,37 +18,52 @@
       <hr/>
     </div>
     <div class="text-muted">
+      <div class="row">
+        <div class="col-md-6">
 
-      <h4>Participants</h4>
-      <ol>
-        <% @group.users.each do |user| %>
-            <li>@<%= user.username %></li>
-        <% end %>
-      </ol>
-      <hr/>
-    </div>
-    <% if (@group.manager == current_user) && !@group.drawn? %>
-        <div class="text-muted text-center">
-          <h4>Generate Secret Santa!</h4>
-          <% if @group.users.size >= 3 %>
-              <%= button_to 'Start the game!',
-                            group_group_draws_path(group_code: @group.code),
-                            class: 'btn btn-primary' %>
-          <% else %>
-              <p><b>Woops, it seems not enough people have joined yet.</b></p>
-
-              <p>(minimum: 3)</p>
-
-              <p><b>Invite your friends!</b></p>
-          <% end %>
-
-          <hr/>
+          <h4>Participants</h4>
+          <ol>
+            <% @group.users.each do |user| %>
+                <li>@<%= user.username %></li>
+            <% end %>
+          </ol>
         </div>
-    <% end %>
+        <div class="col-md-6">
+          <% if @group.drawn? %>
+              <div>
+                <h4>The group has been drawn!</h4>
+                <%= link_to 'OMG!!! Show me who I got!!', group_secret_santa_path(group_code: @group.code) %>
+              </div>
+          <% else %>
+              <div>
+                <p>The game has not started yet. Bug the admin!</p>
+              </div>
+          <% end %>
+        </div>
+        <hr/>
+      </div>
+      <% if (@group.manager == current_user) && !@group.drawn? %>
+          <div class="text-muted text-center">
+            <h4>Generate Secret Santa!</h4>
+            <% if @group.users.size >= 3 %>
+                <%= button_to 'Start the game!',
+                              group_group_draws_path(group_code: @group.code),
+                              class: 'btn btn-primary' %>
+            <% else %>
+                <p><b>Woops, it seems not enough people have joined yet.</b></p>
 
-    <h4>Group Description:</h4>
+                <p>(minimum: 3)</p>
 
-    <p><%= @group.description %></p>
+                <p><b>Invite your friends!</b></p>
+            <% end %>
+
+            <hr/>
+          </div>
+      <% end %>
+
+      <h4>Group Description:</h4>
+
+      <p><%= @group.description %></p>
+    </div>
   </div>
-</div>
 </div>

@@ -1,0 +1,23 @@
+<div class="content-card-header">
+  <h3><%= @group.name %></h3>
+</div>
+<div class="content-card-content">
+  <div class="info-box">
+    <div class="text-muted text-center">
+      <h4>You got @<%= @secret_santa.friend.username %>!!!</h4>
+      <% if @secret_santa.friend.comment.present? %>
+          <p><b>Amanda says: </b><%= @secret_santa.friend.comment %></p>
+      <% else %>
+          <p><b>Amanda has not said anything about what she wants. Be creative!</b></p>
+      <% end %>
+      <p><b>Coming soon: Anonymously message your friend to find out what he wants!</b></p>
+      <hr/>
+    </div>
+    <div class="info-box">
+      <p><b>Group Description:</b> <%= @group.description %></p>
+      <%= link_to 'Return to Group',
+                  group_path(code: @group.code),
+                  class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

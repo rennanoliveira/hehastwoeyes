@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users,
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+             controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
   devise_scope :user do
     delete 'users/sign_out', to: 'devise/sessions#destroy', as: 'destroy_user_session'
@@ -15,7 +15,8 @@ Rails.application.routes.draw do
       get :search
     end
     resources :group_draws, only: [:create]
-    resources :participants
+    resources :participants, only: [:new, :create]
+    resource :secret_santa, only: [:show]
   end
 
 end
