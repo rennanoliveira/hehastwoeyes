@@ -24,7 +24,7 @@ class ParticipantsController < ApplicationController
   end
 
   def participant_params
-    params.require(:participant).permit(:group_id, :user_id)
+    params.require(:participant).permit(:group_id, :user_id, :comment)
   end
 
 end
