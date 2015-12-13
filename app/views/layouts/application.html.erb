@@ -19,13 +19,29 @@
 
 <!-- flash messages -->
 <% flash.each do |key, value| %>
-    <div class="alert-fix alert alert-<%= alert_type(key)%> alert-dismissible fade in" role="alert">
+    <div class="alert-fix alert alert-<%= alert_type(key) %> alert-dismissible fade in" role="alert">
       <button class="close" aria-label="Close" data-dismiss="alert" type="button">
         <span aria-hidden="true">×</span>
       </button>
       <%= value %>
     </div>
 <% end %>
-<%= yield %>
+<div class="container">
+
+  <!-- left side -->
+  <div class="col-md-4">
+    <%= render 'groups/discover_group' %>
+  </div>
+
+  <!-- main content -->
+  <div class="col-md-8">
+    <div class="content-card">
+      <%= yield %>
+
+    </div>
+  </div>
+</div>
+
+
 </body>
 </html>
