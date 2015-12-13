@@ -4,8 +4,9 @@ class GroupDrawsController < ApplicationController
   before_action :verify_group_manager
 
   def create
-    GroupDrawer.new(@group).draw
-    redirect_to group_path(code: @group.code), notice: 'Pairs Drawn!'
+    group_drawer = GroupDrawer.new(@group)
+    group_drawer.draw
+    redirect_to group_path(code: @group.code), notice: group_drawer.errors.full_messages
   end
 
   private
