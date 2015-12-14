@@ -37,6 +37,7 @@ RSpec.describe User, type: :model do
     end
     it 'from existing user should not create a new user' do
       user.uid = uid
+      user.username = 'fakeuser'
       user.provider = provider
       user.save!
       user_previous_count = User.count
