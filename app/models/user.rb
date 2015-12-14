@@ -5,10 +5,6 @@ class User < ActiveRecord::Base
          :rememberable, :trackable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  # Devise is validating email and password presence,
-  # (amongst other validations) this is here just as a reminder
-  # validates :email, presence: true
-  # validates :password, presence: true
   validates :username, presence: true
 
   has_many :participants
